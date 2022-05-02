@@ -1,0 +1,26 @@
+name: "The Seychelles-Oxford Partnership Statistics Training"
+
+output_dir: "docs"
+
+navbar:
+  title: "The Seychells-Oxford Partnership Statistics Training"
+  type: inverse
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Programme"
+      menu:
+        - text: "Week 1"
+          href: week1.html
+        
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    # include:
+    #   after_body: footer.html
+    # css: styles.css
+    
