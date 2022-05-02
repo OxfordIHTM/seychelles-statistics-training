@@ -2,5 +2,203 @@
 title: "Week 1 Training Schedule"
 ---
 
-The Week 1 Training Schedule is as follows:
+<br/>
+
+## Day 1: 3 May 2022
+
+### Theme: Getting the right tools for the job
+
+**Time (Seychelles time):** 13:30 - 14:00
+
+**Topic:** Introduction to the tools
+
+* R and RStudio    
+* Git and GitHub    
+* Slack
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+**Time (Seychelles time):** 14:00 - 15:30
+
+**Topic:** Practical/Lab session
+
+* Installing R
+
+* Installing RStudio
+
+* Installing Git
+
+* Creating a GitHub account
+    
+    * Setting up an organisational account for MoH team (optional)
+
+* Creating a Slack account
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+### Requirements:
+
+* No prior reading/preparation required from participants
+
+* Each participant should have a computer (either Windows, MacOS, or Linux) and that they have the rights/permissions to install software on their computer
+
+* Internet connection
+
+<br/>
+
+## Day 2: 4 May 2022
+
+### Theme: Learning the basics of R - Part 1: R through the user interface of RStudio
+
+**Time (Seychelles time):** 13:30 - 14:00
+
+**Topic:** Introduction to using R for computing and statistical analysis
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+**Time (Seychelles time):** 14:00 - 15:30
+
+**Topic:** Practical/Lab Session
+
+* Understanding how to use RStudio to interface with R
+
+* Getting familiar with graphical interface tools available in RStudio
+
+* Best practices in configuring RStudio for most use-cases
+
+* Best practices in project-oriented workflows using RStudio
+
+**Topic:** Getting acquainted with R for computing and statistical analysis
+
+* Basic mathematical operators
+
+* Basic mathematical and statistical functions
+
+**Topic:** Working with Data in R
+
+* Accessing and reading data in R
+
+* Setting up an RStudio project for your lab/practical session training
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+### Requirements:
+
+* A fully configured computer with the following installed
+
+    * R (version 4.2.0 preferred but earlier versions acceptable)
+    * RStudio (version 2022.02.2+485)
+
+* Optional (recommended but no required):
+
+    * Watch video - https://www.youtube.com/watch?v=SWxoJqTqo08
+
+<br/>
+
+## Day 3: 5 May 2022
+
+### Theme: Learning the basics of R - Part 2: Extending R using packages, creating and manipulating objects
+
+**Time (Seychelles time):** 13:30 - 14:00
+
+**Topic:** Introduction to extending R using packages
+
+* What are packages    
+* Installing and loading R packages    
+* Object-oriented programming
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+**Time (Seychelles time):** 14:00 - 15:30
+
+**Topic:** Practical/Lab Session - Working with Data in R
+
+* Using packages to access and read different data types in R    
+* Creating data objects    
+* Understanding data objects    
+
+    * Data types    
+    * Data structure/data shape    
+    
+* Manipulating data objects    
+* Updating your lab/practical session RStudio project
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+### Requirements:
+
+* A fully configured computer with the following installed    
+    * R (version 4.2.0 preferred but earlier versions acceptable)    
+    * RStudio (version 2022.02.2+485)
+
+* Optional (recommended but no required):
+
+    * Watch these videos
+        * https://www.youtube.com/watch?v=hxlHQ2AtLUk
+        * https://www.youtube.com/watch?v=Px9VNWHja4M
+        * https://www.youtube.com/watch?v=O7KL17QZNqg
+        * https://www.youtube.com/watch?v=wploTQFjnpE
+
+<br/>
+
+## Day 4: 6 May 2022
+
+### Theme: Learning the basics of R - Part 3: Creating your own functions and working on your own data
+
+
+**Time (Seychelles time):** 13:30 - 14:00
+
+**Topic:** Introduction to extending R by creating and using your own functions
+
+* What are functions    
+* Creating your own functions
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+**Time (Seychelles time):** 14:00 - 15:30
+
+**Topic:** Practical/Lab Session
+
+* Working with Data in R    
+    * Discussion on your data sets    
+    * Accessing and reading your own data in R    
+    * Creating and manipulating objects from your own data    
+    * Creating and applying your own functions on your own data
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+### Requirements:
+
+* A fully configured computer with the following installed    
+    * R (version 4.2.0 preferred but earlier versions acceptable)    
+    * RStudio (version 2022.02.2+485)
+
+* Be ready to discuss the following points about your data    
+    * What are your data sources?    
+        * Be as specific as possible. We want to know where you get your data. This can be from the HMIS, from the internet as a download, from the internet as a table of data from a webpage, from a data file provided by the statistics bureau, from a document/PDF provided by the statistics bureau, etc.
+
+    * What are the data/document formats?    
+        * Be as specific as possible. We want to know the file format. This can be a CSV file, XLSX file, HTML, PDF, SPSS, SAS, Stata, etc.)    
+        
+    * Where is the data stored?    
+        * Be as specific as possible. Here we want to know where the raw data is stored and not the data that has already been processed by yourselves. This can be from a database, from a shared folder/drive on the internet, from a repository maintained by some institution, etc.    
+        
+    * What steps do you take to process the raw data?    
+        * Describe your steps from accessing the data from the source, storing the raw data, tools you use to and steps you take to work with the data, processing steps to shape the data to be ready for analysis, storing of processed data in preparation for data analysis
 

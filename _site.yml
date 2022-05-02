@@ -6,7 +6,7 @@ navbar:
   title: "The Seychells-Oxford Partnership Statistics Training"
   type: inverse
   left:
-    - text: "Home"
+    - text: ""
       icon: fa-home
       href: index.html
     - text: "About"
