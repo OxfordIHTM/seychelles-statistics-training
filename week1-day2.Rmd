@@ -268,8 +268,8 @@ In R, answer the following questions using logical operators:
 These operators are used to assign values to objects.
 
 ```{r, echo = FALSE}
-operator <- c("<-, <<-, =", "->, ->>")
-description <- c("Leftwards assignment", "Rightwards assignment")
+operator <- c("<-", "<<-", "=", "->", "->>")
+description <- c("Leftwards assignment", "Leftwards assignment", "Leftwards assignment", "Rightwards assignment", "Rightwards assignment")
 
 data.frame(operator, description) |>
   knitr::kable(
