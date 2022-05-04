@@ -3,7 +3,7 @@ name: "The Seychelles-Oxford Partnership Statistics Training"
 output_dir: "docs"
 
 navbar:
-  title: "The Seychells-Oxford Partnership Statistics Training"
+  title: "The Seychelles-Oxford Partnership Statistics Training"
   type: inverse
   left:
     - text: ""
