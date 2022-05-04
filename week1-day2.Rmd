@@ -1,0 +1,325 @@
+---
+title: "Introduction to R and RStudio"
+subtitle: "Using R for computing and statistical analysis"  
+author: 
+  - "Ernest Guevarra"
+date: '2022-05-04'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+
+if (!require(remotes)) install.packages("remotes")
+if (!require(fontawesome)) remotes::install_github("rstudio/fontawesome")
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_light(
+  base_color = "#002147",
+  title_slide_background_image = "",
+  title_slide_background_size = "cover",
+  header_font_google = google_font("Fira Sans"),
+  text_font_google   = google_font("Fira Sans Condensed"),
+  text_font_size = "1.2em",
+  link_color = "#214700",
+  header_h1_font_size = "50px",
+  header_h2_font_size = "40px",
+  header_h3_font_size = "30px",
+  code_font_google   = google_font("Fira Mono"),
+  text_slide_number_font_size = "0.5em",
+  footnote_font_size = "0.5em"
+)
+```
+
+# Outline
+
+1. Basic operators in R
+
+    * Arithmetic    
+    * Relational    
+    * Logical    
+    * Assignment
+
+2. Basic mathematical and statistical functions in R
+
+
+---
+
+class: inverse, center, middle
+
+# Basic operators in R
+
+---
+
+# Arithmetic operators
+
+These operators are used to carry out mathematical operations like addition and multiplication. Here is a list of arithmetic operators available in R.
+
+```{r, echo = FALSE}
+operator <- c("+", "-", "*", "/", "^", "%%", "%/%")
+description <- c("Addition", "Subtraction", "Multiplication", "Division", "Exponent", "Modulus", "Integer Division")
+
+data.frame(operator, description) |>
+  knitr::kable(
+    row.names = FALSE,
+    col.names = c("Operator", "Description")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    position = "center"
+  )
+```
+
+---
+
+# Arithmetic operators - application
+
+Let us try R's arithmetic operations to calculate BMI:
+
+$$ \text{BMI} ~ = ~ \frac{kgs}{m  ^ 2} $$
+
+using the following values:
+
+$$ \text{weight} ~ = ~ 80 ~ \text{kgs} $$
+
+$$ \text{height} ~ = ~ 1.6 ~ \text{metres} $$
+---
+
+# Arithmetic operators - application
+
+```{r, echo = TRUE}
+80 / 1.6 ^ 2
+```
+
+---
+
+# Relational operators
+
+Relational operators are used to compare between values. Here is a list of relational operators available in R.
+
+```{r, echo = FALSE}
+operator <- c("<", ">", "<=", ">=", "==", "!=")
+description <- c("Less than", "Greater than", "Less than or equal to", "Greater than or equal to", "Equal to", "Not equal to")
+
+data.frame(operator, description) |>
+  knitr::kable(
+    row.names = FALSE,
+    col.names = c("Operator", "Description")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    position = "center"
+  )
+```
+
+---
+
+# Relational operators - application
+
+Let us apply the relational operators using again BMI as an example.
+
+Say we have **Person A** with a weight of *80 kilograms* and a *height of 1.6 metres* and **Person B** with a weight of *120 kilograms* and a height of *210 centimetres*.
+
+In R, try to answer the following questions:
+
+1. Is **Person A** heavier in weight compared to **Person B**?
+
+2. Is **Person A** taller in height compared to **Person B**?
+
+3. Whose BMI is greater, **Person A** or **Person B**?
+
+---
+
+# Relational operators - application
+
+### 1. Is **Person A** heavier in weight compared to **Person B**?
+
+```{r, echo = TRUE}
+80 > 120     ## Is Person A's weight greater than Person B's weight
+
+80 < 120     ## Is Person A's weight lesser than Person B's weight
+
+80 == 120    ## Is Person A's weight the same as Person B's weight
+```
+
+---
+
+# Relational operators - application
+
+### 2. Is **Person A** taller in height compared to **Person B**?
+
+```{r, echo = TRUE}
+1.6 > 210 / 100    ## Is Person A's height greater than Person B's height
+
+1.6 < 210 / 100    ## Is Person A's height lesser than Person B's height
+
+1.6 == 210 / 100   ## Is Person A's height the same as Person B's height
+```
+
+---
+
+# Relational operators - application
+
+### 3. Whose BMI is greater, **Person A** or **Person B**?
+
+```{r, echo = TRUE}
+80 / 1.6 ^ 2 > 120 / (210 / 100) ^ 2    ## Is Person A's BMI greater than Person B's BMI
+
+80 / 1.6 ^ 2 < 120 / (210 / 100) ^ 2    ## Is Person A's BMI lesser than Person B's BMI
+
+80 / 1.6 ^ 2 == 120 / (210 / 100) ^ 2   ## Is Person A's BMI the same as Person B's BMI
+```
+
+---
+
+# Logical operators
+
+Logical operators are used to carry out Boolean operations like AND, OR etc.
+
+```{r, echo = FALSE}
+operator <- c("!", "&", "&&", "|", "||")
+description <- c("Logical NOT", "Element-wise logical AND", "Logical AND", "Element-wise logical OR", "Logical OR")
+
+data.frame(operator, description) |>
+  knitr::kable(
+    row.names = FALSE,
+    col.names = c("Operator", "Description")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    position = "center"
+  )
+```
+
+---
+
+# Logical operators - application
+
+Let us apply the logical operators again using the example of BMI for Person A and Person B in the previous exercise.
+
+In R, answer the following questions using logical operators:
+
+1. Is the weight of **Person A** AND the weight of **Person B** both equal to 80 kilograms?
+
+2. Is the weight of **Person A** OR the weight of **Person B** less than 100 kilograms?
+
+3. Is the weight of **Person A** greater than the weight of **Person B** AND the height of **Person A** greater than the height of **Person B**?
+
+4. Is the weight of **Person A** greater than the weight of **Person B** OR the height of **Person A** greater than the height of **Person B**?
+
+---
+
+# Logical operators - application
+
+### 1. Is the weight of **Person A** AND the weight of **Person B** both equal to 80 kilograms?
+
+```{r, echo = TRUE}
+80 == 80 & 120 == 80
+```
+
+### 2. Is the weight of **Person A** OR the weight of **Person B** less than 100 kilograms?
+
+```{r, echo = TRUE}
+80 < 100 | 120 < 100
+```
+
+---
+
+# Logical operators - application
+
+### 3. Is the weight of **Person A** greater than the weight of **Person B** AND the height of **Person A** greater than the height of **Person B**?
+
+```{r, echo = TRUE}
+80 > 120 & 1.6 > 2.1
+```
+
+### 4. Is the weight of **Person A** greater than the weight of **Person B** OR the height of **Person A** greater than the height of **Person B**?
+
+```{r, echo = TRUE}
+80 > 120 | 1.6 > 2.1
+```
+
+---
+
+# Assignment operators
+
+These operators are used to assign values to objects.
+
+```{r, echo = FALSE}
+operator <- c("<-, <<-, =", "->, ->>")
+description <- c("Leftwards assignment", "Rightwards assignment")
+
+data.frame(operator, description) |>
+  knitr::kable(
+    row.names = FALSE,
+    col.names = c("Operator", "Description")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    position = "center"
+  )
+```
+
+---
+
+# Assignment operators - application
+
+Let us again use the BMI example to apply the assignment operators:
+
+1. Assign the weight of person A to an object named `weight_a`
+
+2. Assign the height of person A to an object named `height_a`
+
+3. Calculate BMI for person A using objects `weight_a` and `height_a`. Assign the value of BMI to an object named `bmi_a`.
+
+---
+
+# Assignment operators - application
+
+1. Assign the weight of person A to an object named `weight_a`
+
+```{r, echo = TRUE}
+weight_a <- 80
+
+weight_a
+```
+
+2. Assign the height of person A to an object named `height_a`
+
+```{r, echo = TRUE}
+height_a <- 1.6
+
+height_a
+```
+
+3. Calculate BMI for person A using objects `weight_a` and `height_a`. Assign the value of BMI to an object named `bmi_a`.
+
+```{r, echo = TRUE}
+bmi_a <- weight_a / height_a ^ 2
+
+bmi_a
+```
+
