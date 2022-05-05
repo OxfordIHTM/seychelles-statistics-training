@@ -1,6 +1,6 @@
 ---
 title: "Basics of R Part 2"
-subtitle: "Using base R function and extendig R using packages"  
+subtitle: "Using base R functions and extendig R using packages"  
 author: 
   - "Ernest Guevarra"
 date: '2022-05-05'
@@ -543,7 +543,7 @@ read.xlsx(
 * We should assign this data to an object. Let us call this object `women_xlsx`
 
 .pull-left[
-```{r, echo = TRUE, eval = FALSE}
+```{r, echo = TRUE, eval = TRUE}
 women_xlsx <- read.xlsx(
   xlsxFile = "data/women.xlsx",
   sheet = 1
