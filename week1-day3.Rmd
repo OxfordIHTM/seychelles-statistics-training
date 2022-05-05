@@ -1,0 +1,558 @@
+---
+title: "Basics of R Part 2"
+subtitle: "Using base R function and extendig R using packages"  
+author: 
+  - "Ernest Guevarra"
+date: '2022-05-05'
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    nature:
+      slideNumberFormat: "%current%"
+      highlightStyle: github
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+
+if (!require(remotes)) install.packages("remotes")
+if (!require(fontawesome)) remotes::install_github("rstudio/fontawesome")
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_light(
+  base_color = "#002147",
+  title_slide_background_image = "",
+  title_slide_background_size = "cover",
+  header_font_google = google_font("Fira Sans"),
+  text_font_google   = google_font("Fira Sans Condensed"),
+  text_font_size = "1.2em",
+  link_color = "#214700",
+  header_h1_font_size = "50px",
+  header_h2_font_size = "40px",
+  header_h3_font_size = "30px",
+  code_font_google   = google_font("Fira Mono"),
+  text_slide_number_font_size = "0.5em",
+  footnote_font_size = "0.5em"
+)
+```
+
+# Outline
+
+1. Base functions in R
+
+    * What is a function?    
+    * Basic function syntax
+    
+2. Extending R using packages
+
+    * What are packages?    
+    * How to install packages
+    * Loading packages to the environment
+    
+3. Accessing and reading data into R
+
+---
+
+# What is a function?
+
+* A set of statements organized together to perform a specific task. 
+
+* R has a large number of in-built functions.
+
+* In R, a function is an object so the R interpreter is able to pass control to the function, along with arguments that may be necessary for the function to accomplish the actions.
+
+* The function in turn performs its task and returns control to the interpreter as well as any result which may be stored in other objects.
+
+---
+
+# Functions in R
+
+## Base functions
+
+* Term we use for builtin functions in R.
+
+* These functions cover a wide range of purposes, use cases, and applications one of which is for statistical analysis (probably the most common builtin functions in R)
+
+* Everyting we do in R is almost always mediated/made possible by using functions
+
+## Basic function syntax
+```{r, echo = TRUE, eval = FALSE}
+function_name(argument1, argument2, ...)
+```
+
+---
+
+# Using functions - accessing R builtin dataset
+
+.pull-left[
+* First let us use some sample/toy data. R has builtin datasets for teaching/testing purposes. We will continue on the BMI theme from yesterday by accessing the `women` builtin dataset in R. This dataset is of average height (inches) and weight (lbs) of women age 30-39 years old.
+
+* We access this data using the `data()` function as follows:
+
+```{r, echo = TRUE}
+data("women")
+```
+]
+
+.pull-right[
+```{r, echo = TRUE}
+women
+```
+]
+
+---
+
+# Using functions - exploring data structure
+
+* Being able to understand the **data structure** of a dataset helps us make good decisions on how to work with data or how to analyse data.
+
+* There are several R functions that gives us the characteristics and structure of a dataset such as:
+
+    * The shape of the data    
+    * The number of records in the data    
+    * The variables of the data    
+    * The number of variables in the data    
+    * The values of variables in the data
+
+---
+
+# Using functions - describing the shape of the data
+
+* We use the `class()` function to know the **class** attribute of an R object.
+
+* Knowing the **class** of an R object give us information on what kind of object it is and how we can work with it in R
+
+## Task:
+
+* Using the `women` dataset that we just loaded, apply the `class()` function:
+
+--
+
+```{r, echo = TRUE}
+## Get class of women dataset
+class(women)
+```
+
+---
+
+# Using functions - number of records in the data
+
+* We often need to know how many records are in the dataset that we are working on.
+
+* This is useful for various statistical analysis that we perform on data.
+
+* The function `nrow()` gives us the number of rows of a `data.frame` R object
+
+## Task:
+
+* Using the `women` dataset, apply the `nrow()` function to get the number of rows:
+
+--
+
+```{r, echo = TRUE}
+## Get number of rows of women dataset
+nrow(women)
+```
+
+---
+
+# Using functions - number of records in the data
+
+## Bonus question:
+
+* How many columns does the `women` dataset have?
+
+--
+
+```{r, echo = TRUE}
+ncol(women)
+```
+
+---
+
+# Using functions - variable names of a dataset
+
+* We often need to know the variables of the dataset that we are working on.
+
+* This is useful for various statistical analysis that we perform on data.
+
+* The function `names()` gives us the variable names of a `data.frame` R object
+
+## Task:
+
+* Using the `women` dataset, apply the `names()` function to get the variable names:
+
+--
+
+```{r, echo = TRUE}
+## Get variable names of women dataset
+names(women)
+```
+
+---
+
+# Using functions - variable names of a dataset
+
+## Bonus questions:
+
+* Can you describe the shape and structure of the output of `names(women)`?
+
+--
+
+```{r, echo = TRUE}
+## Get class of variable names of women dataset
+class(names(women))
+```
+
+--
+
+* Can you get how *LONG* (how many variable names) the output of `names(women)` is?
+
+--
+
+```{r, echo = TRUE}
+## Get length of the variable names of women dataset
+length(names(women))
+```
+
+---
+
+# Using functions - describing the structure of a dataset
+
+* Another approach to get a full description of the structure of a dataset object in R is by using the `str` function
+
+```{r, echo = TRUE}
+str(women)
+```
+
+--
+
+* The output of using `str()` function is comprehensive.
+
+    * It gives us the class of the object    
+    * It gives us the number of records/observations    
+    * It gives us the number of variables    
+    * It gives us the names of the variables    
+    * It gives us the class of each of the variables
+    * It gives us a glimpse of the values of each of the variables
+    
+---
+
+# Using functions - accessing the variables of a dataset
+
+* When working with `data.frame` objects, we often need to use/access only a specific variable in that `data.frame` object
+
+* Knowing how to access a specific variable in a `data.frame` object is one of the most important skill im R
+
+* There are several ways to access a specific variable in a `data.frame` object
+
+---
+
+# Using functions - accessing the variables of a dataset
+
+## Using the `$` operator
+
+* Access the **`height`** variable using the **`$`** operator
+
+```{r, echo = TRUE}
+women$height
+```
+
+--
+
+* Now try to access the **`weight`** variable using the **`$`** operator
+
+--
+
+```{r, echo = TRUE}
+women$weight
+```
+
+---
+
+# Using functions - accessing the variables of a dataset
+
+## Using the indexing method - `[ ]`
+
+* Access the **`height`** variable using **`[ ]`**
+
+```{r, echo = TRUE}
+women[ , "height"]
+
+women[ , 1]
+
+women[[1]]
+```
+
+---
+
+# Using functions - accessing the variables of a dataset
+
+## Using the indexing method - `[ ]`
+
+* Now try to access the **`weight`** variable using **`[ ]`**
+
+--
+
+```{r, echo = TRUE}
+women[ , "weight"]
+
+women[ , 2]
+
+women[[2]]
+```
+
+---
+
+# Using functions - accessing other values of a dataset
+
+## Bonus question:
+
+* Access the **`height`** value for the **third** row/record of the dataset
+
+--
+
+```{r, echo = TRUE}
+women[3, "height"]
+```
+
+--
+
+```{r, echo = TRUE}
+women[ , "height"][3]
+```
+
+---
+
+# Using functions - accessing other values of a dataset
+
+## Bonus question:
+
+* Access the **`height`** value for the **third** row/record of the dataset
+
+```{r, echo = TRUE}
+women[3, ]["height"]
+```
+
+--
+
+```{r, echo = TRUE}
+women[3, ][["height"]]
+```
+
+--
+
+```{r, echo = TRUE}
+women$height[3]
+```
+
+---
+
+# Using functions - some basic statistical functions
+
+```{r, echo = FALSE}
+function_name <- c("mean()", "median()", "var()", "sd()", "scale()")
+function_description <- c(
+  "Get the mean value of a set of numbers",
+  "Get the median value of a set of numbers",
+  "Get the estimated variance of the population from which you sampled",
+  "Get the standard deviation of the population from which you sampled",
+  "Get the z-scores for a set of numbers"
+)
+
+data.frame(function_name, function_description) |>
+  knitr::kable(
+    row.names = FALSE,
+    col.names = c("Function", "Description")
+  ) |>
+  kableExtra::kable_styling(
+    bootstrap_options = "striped",
+    full_width = FALSE,
+    position = "center"
+  )
+```
+
+---
+
+# Using functions - application of some basic statistical functions
+
+## 1. Get the mean height in the `women` dataset
+
+## 2. Get the median weight in the `women` dataset
+
+--
+
+```{r, echo = TRUE}
+mean(women$height)
+```
+
+```{r, echo = TRUE}
+median(women$weight)
+```
+
+---
+
+# Extending R using packages
+
+* There are times that we need functions that are not builtin to R but are available through external **R packages**
+
+* **R packages** are collections of functions and data sets developed by the community. 
+
+* **R packages** increase the power of R by improving existing base R functionalities, or by adding new ones.
+
+* For this project, majority of the statistical tools/functions we need are already builtin to R.
+
+* However, most of the tools we need for data access and loading, data manipulation, data processing, creating reports, reproducibility, and automation will rquire us to extend R using these additional **R packages**
+
+---
+
+# Extending R using packages
+
+* We usually have our data in different files and these files can be in different file formats.
+
+* Depending on the file format of your data, different functions are used to read these files into R.
+
+* Base (builtin) functions in R have a limited types of data that it can read.
+
+* We often need to install additional **R packages** to read other types of data e.g., `.XLSX`, `.dta`, `.sav`, etc.
+
+---
+
+# Extending R using packages
+
+* Using base functions in R to read a `text` type of data file such as `CSV`
+
+.pull-left[
+```{r, echo = TRUE, eval = FALSE}
+read.table(
+  file = "data/women.csv", 
+  header = TRUE, sep = ","
+)
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, eval = TRUE}
+read.table(
+  file = "data/women.csv", 
+  header = TRUE, sep = ","
+)
+```
+]
+
+---
+
+# Extending R using packages
+
+* Using base functions in R to read a `text` type of data file such as `CSV`
+
+.pull-left[
+```{r, echo = TRUE, eval = FALSE}
+read.csv(file = "data/women.csv")
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, eval = TRUE}
+read.csv(file = "data/women.csv")
+```
+]
+
+---
+
+# Extending R using packages
+
+* We should assign this data to an object. Let us call this object `women_csv`
+
+.pull-left[
+```{r, echo = TRUE, eval = TRUE}
+women_csv <- read.csv("data/women.csv")
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, eval = TRUE}
+women_csv
+```
+]
+
+---
+
+# Extending R using packages
+
+* Using the R package **`openxlsx`** to read `.XLSX` type of data file
+
+* We first need to install the `openxlsx` package
+
+```{r, echo = TRUE, eval = FALSE}
+install.packages("openxlsx")
+```
+
+--
+
+* We then need to load the package into the current working environment. We use the `library()` function for this:
+
+```{r, echo = TRUE}
+library("openxlsx")
+```
+
+---
+
+# Extending R using packages
+
+* Using the R package **`openxlsx`** to read `.XLSX` type of data file
+
+* We are now ready to use the function `read.xlsx()` from the `openxlsx` package to read the `women.xlsx` file:
+
+.pull-left[
+```{r, echo = TRUE, eval = FALSE}
+read.xlsx(
+  xlsxFile = "data/women.xlsx",
+  sheet = 1
+)
+```
+]
+
+.pull-right[
+```{r, echo = FALSE, eval = TRUE}
+read.xlsx(
+  xlsxFile = "data/women.xlsx",
+  sheet = 1
+)
+```
+]
+
+---
+
+# Extending R using packages
+
+* We should assign this data to an object. Let us call this object `women_xlsx`
+
+.pull-left[
+```{r, echo = TRUE, eval = FALSE}
+women_xlsx <- read.xlsx(
+  xlsxFile = "data/women.xlsx",
+  sheet = 1
+)
+```
+]
+
+.pull-right[
+```{r, echo = TRUE}
+women_xlsx
+```
+]

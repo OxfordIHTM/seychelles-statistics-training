@@ -122,6 +122,8 @@ title: "Week 1 Training Schedule"
 
 **Facilitator:** Ernest Guevarra
 
+[**View slide deck online**](https://oxfordihtm.github.io/seychelles-statistics-training/week1-day3.html) | [**Download slide deck in PDF**](https://oxfordihtm.github.io/seychelles-statistics-training/pdf/w1d3-using-functions-r.pdf)
+
 &nbsp;
 
 **Time (Seychelles time):** 14:00 - 15:30

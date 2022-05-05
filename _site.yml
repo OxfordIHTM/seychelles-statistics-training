@@ -9,8 +9,8 @@ navbar:
     - text: ""
       icon: fa-home
       href: index.html
-    - text: "About"
-      href: about.html
+    # - text: "About"
+    #   href: about.html
     - text: "Programme"
       menu:
         - text: "Week 1"
