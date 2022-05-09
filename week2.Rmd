@@ -1,0 +1,55 @@
+---
+title: "Week 2 Training Schedule"
+---
+
+<br/>
+
+## Day 1: 9 May 2022
+
+### Theme: Tools for versioning and sharing research
+
+**Time (Seychelles time):** 13:30 - 14:00
+
+**Topic:** Introduction to the tools
+
+* Git and GitHub    
+
+
+**Facilitator:** Ernest Guevarra
+
+[**View slide deck online**](https://oxfordihtm.github.io/open-reproducible-science/session2.html) | [**Download slide deck in PDF**](https://oxfordihtm.github.io/open-reproducible-science/pdf/session2-git-and-github-with-r.pdf)
+
+
+&nbsp;
+
+**Time (Seychelles time):** 14:00 - 15:30
+
+**Topic:** Practical/Lab session
+
+* Installing Git
+
+* Creating a GitHub account
+
+* Creating a GitHub Personal Access Token (PAT)
+
+* Connecting GitHub and RStudio
+
+* First assignment through GitHub Education
+
+**Facilitator:** Ernest Guevarra
+
+&nbsp;
+
+
+
+### Requirements:
+
+* A fully configured computer with the following installed
+
+    * R (version 4.2.0 preferred but earlier versions acceptable)
+    * RStudio (version 2022.02.2+485)
+
+* Internet connection
+
+<br/>
+

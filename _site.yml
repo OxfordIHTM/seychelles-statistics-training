@@ -15,6 +15,8 @@ navbar:
       menu:
         - text: "Week 1"
           href: week1.html
+        - text: "Week 2"
+          href: week2.html
         
 output:
   html_document:
